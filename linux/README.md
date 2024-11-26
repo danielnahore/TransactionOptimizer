@@ -32,12 +32,3 @@ docker compose down
 
 SEND test data
 curl -X POST http://localhost:5000/api/Transaction/submit -H "Content-Type: application/json" -d '{"Id":"1", "Data":"Sample Transaction"}'
-
-
-RUN application
-docker compose up -d
-docker compose down 
-
-
-SEND test data
-curl -X POST http://localhost:5000/api/Transaction/submit -H "Content-Type: application/json" -d '{"Id":"1", "Data":"Sample Transaction"}'
