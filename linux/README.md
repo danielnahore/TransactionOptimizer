@@ -7,21 +7,31 @@ STRUCTURE
 - Docker and Load Balancer configurations for scalability in the cloud environment.
 
 TransactionSystem/
-├── TransactionSystem.sln
-├── TransactionProcessor/           # Main application folder
-│   ├── Controllers/                # Contains API controllers
-│   │   └── TransactionController.cs
-│   ├── Models/                     # Data models for transactions
-│   │   └── Transaction.cs
-│   ├── Services/                   # Services for queuing and processing transactions
-│   │   ├── ITransactionQueue.cs
-│   │   ├── TransactionQueue.cs
-│   │   └── TransactionProcessorService.cs
-│   ├── Program.cs                  # Main program entry
-│   ├── Startup.cs                  # Dependency injection setup
-│   └── TransactionProcessor.csproj
-└── Dockerfile                      # Dockerfile for containerizing the application
-└── docker-compose.yml              # Docker Compose for orchestrating multiple instances
+- TransactionSystem.sln
+- TransactionProcessor/           # Main application folder
+    - Controllers/                # Contains API controllers
+        - TransactionController.cs
+    - Models/                     # Data models for transactions
+        - Transaction.cs
+    - Properies/                 
+    - Services/                   # Services for queuing and processing transactions
+        - ITransactionQueue.cs
+        - TransactionQueue.cs
+        - TransactionProcessorService.cs
+    - Program.cs                  # Main program entry
+    - TransactionProcessor.csproj
+    - properties
+- Dockerfile                      # Dockerfile for containerizing the application
+- docker-compose.yml              # Docker Compose for orchestrating multiple instances
+
+
+RUN application
+docker compose up -d
+docker compose down 
+
+
+SEND test data
+curl -X POST http://localhost:5000/api/Transaction/submit -H "Content-Type: application/json" -d '{"Id":"1", "Data":"Sample Transaction"}'
 
 
 RUN application
