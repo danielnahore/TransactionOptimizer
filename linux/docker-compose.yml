@@ -1,0 +1,21 @@
+services:
+  transaction-processor:
+    build: .
+    ports:
+      - "5000-5002:80"
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+  load-balancer:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - transaction-processor
